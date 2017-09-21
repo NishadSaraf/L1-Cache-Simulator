@@ -1,0 +1,175 @@
+Sample 1:
+-d
+w 0x080      w 0x088      w 0x0a0      r 0xf0000    r 0x080
+r 0x088      r 0x0f0      r 0x0a0
+
+Output:
+INPUT FILE SUCCESSFULLY LOADED
+[[- DEBUG ACTIVATED -]]
+
+--------------STATISTICS---------------
+Access:7 (read:4, write:3)
+Cycles with Cache: 147
+Cycles without Cache: 350
+StreamIn: 7
+StreamOut: 0
+Replacement: 0
+Miss: 7
+Hit: 0 (readHit: 0, writeHit: 0)
+Write back count: 0
+HIT RATE : 0.000000
+-----------------END-----------------
+
+BELOW IS DEBUG INFORMATION IN LIFO ORDER
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111000000000000
+----------------------------------------------------------------------------------------
+Sample 2:
+w 0x00044220 w 0x00044440 w 0x00044240 w 0x000ffff0
+r 0x00044220 r 0xff000000 r 0x00044440 r 0x00044240
+
+Output:
+INPUT FILE SUCCESSFULLY LOADED
+
+--------------STATISTICS---------------
+Access:7 (read:3, write:4)
+Cycles with Cache: 147
+Cycles without Cache: 350
+StreamIn: 7
+StreamOut: 0
+Replacement: 0
+Miss: 7
+Hit: 0 (readHit: 0, writeHit: 0)
+Write back count: 0
+HIT RATE : 0.000000
+-----------------END-----------------
+----------------------------------------------------------------------------------------
+Sample 3:
+w 0xff00ff00 w 0xff00ff20 w 0xff00fff0 w 0xff00ffff w 0xff000000
+w 0xff00000f w 0xff000080 w 0xff0000f0 w 0xff000084 w 0xff0000ff
+-d -t
+r 0xff00ff00 r 0xff00ff0f r 0xff00ff00 r 0xff00ff0f r 0xff000084
+r 0xff000086 r 0xff000088 r 0xff00ff00 r 0xff00ff20 r 0xff00ff00
+r 0xff00ff20 r 0xff00fff0 r 0xff00ffff r 0x12345678
+
+Output:
+INPUT FILE SUCCESSFULLY LOADED
+Reading from address: 0xff00ff00
+Reading set 63...
+ R missed, space available, stream in
+
+Reading from address: 0xff00ff0f
+Reading set 63...
+ R missed, space available, stream in
+
+Reading from address: 0xff00ff00
+Reading set 63...
+ R missed, space available, stream in
+
+Reading from address: 0xff00ff0f
+Reading set 63...
+ R missed, space available, stream in
+
+Reading from address: 0xff000084
+Reading set 0...
+ R missed, space available, stream in
+
+Reading from address: 0xff000086
+Reading set 0...
+ R missed, space available, stream in
+
+Reading from address: 0xff000088
+Reading set 0...
+ R missed, space available, stream in
+
+Reading from address: 0xff00ff00
+Reading set 63...
+ R missed, space available, stream in
+
+Reading from address: 0xff00ff20
+Reading set 63...
+ R missed, space available, stream in
+
+Reading from address: 0xff00ff00
+Reading set 63...
+ R missed, space available, stream in
+
+Reading from address: 0xff00ff20
+Reading set 63...
+ R missed, space available, stream in
+
+Reading from address: 0xff00fff0
+Reading set 63...
+ R missed, space available, stream in
+
+Reading from address: 0xff00ffff
+Reading set 63...
+ R missed, space available, stream in
+
+Reading from address: 0x12345678
+Reading set 43...
+ R missed, space available, stream in
+
+[[- DEBUG ACTIVATED -]]
+[[- TRACE ACTIVATED -]]
+
+--------------STATISTICS---------------
+Access:24 (read:14, write:10)
+Cycles with Cache: 504
+Cycles without Cache: 1200
+StreamIn: 24
+StreamOut: 0
+Replacement: 0
+Miss: 24
+Hit: 0 (readHit: 0, writeHit: 0)
+Write back count: 0
+HIT RATE : 0.000000
+-----------------END-----------------
+
+BELOW IS DEBUG INFORMATION IN LIFO ORDER
+Set:63  Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:43  Line:0  Dirty:48        Valid:48        LRU:0   Tag:0001001000110100
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:63  Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:63  Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:63  Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:63  Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:63  Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:63  Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:63  Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:63  Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:63  Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:63  Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:63  Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:63  Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:63  Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+Set:0   Line:0  Dirty:48        Valid:48        LRU:0   Tag:1111111100000000
+----------------------------------------------------------------------------------------
+Sample 4: Trace file generated in Homework assignment #1.
+
+Output:
+INPUT FILE SUCCESSFULLY LOADED
+
+--------------STATISTICS---------------
+Access:32000000 (read:24000000, write:8000000)
+Cycles with Cache: 536922980
+Cycles without Cache: 1600000000
+StreamIn: 25246149
+StreamOut: 0
+Replacement: 0
+Miss: 25246149
+Hit: 6753851 (readHit: 4297308, writeHit: 2456543)
+Write back count: 0
+HIT RATE : 0.211058
+-----------------END-----------------
